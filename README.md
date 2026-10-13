@@ -1,5 +1,5 @@
 # Diabetes Prediction — Machine Learning Project
-
+diabetesprediction-zy7tcd6qrkrjc2hamqzkd6.streamlit.app
 A GitHub-ready Streamlit app that trains two scikit-learn classification models and predicts a demo risk category from health measurements.
 
 > **Important limitation:** The included `data/diabetes.csv` is a **synthetic, programmatically generated dataset** for demonstrating an end-to-end machine-learning workflow. It is not a real clinical dataset, has no clinical validation, and must not be used for diagnosis, treatment, or medical decisions. The probability and evaluation scores are illustrative only.
