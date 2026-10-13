@@ -12,11 +12,17 @@ from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, cla
 
 st.set_page_config(page_title="Diabetes Prediction", page_icon="🩺", layout="wide")
 BASE_DIR = Path(__file__).resolve().parent
+# Resolve the CSV relative to app.py so this works locally and on Streamlit Cloud.
 DATA_PATH = BASE_DIR / "data" / "diabetes.csv"
 FEATURES = ["Pregnancies", "Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI", "DiabetesPedigreeFunction", "Age"]
 
 @st.cache_data
 def load_data():
+    if not DATA_PATH.is_file():
+        raise FileNotFoundError(
+            f"Dataset not found at {DATA_PATH}. Make sure the GitHub repository "
+            "contains the data/diabetes.csv file (including the data folder)."
+        )
     df = pd.read_csv(DATA_PATH)
     required = FEATURES + ["Outcome"]
     missing = set(required) - set(df.columns)
